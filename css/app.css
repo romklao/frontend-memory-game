@@ -91,6 +91,13 @@ h1 {
     margin-bottom: 10px;
 }
 
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
 
 
 
