@@ -48,6 +48,18 @@ function displayCard() {
     this.classList.toggle('disabled');
 }
 
+function openCard() {
+    openCards.push(this);
+    let len = openCards.length;
+    if (len === 2) {
+        if (openCards[0].children[0].className === openCards[1].children[0].className) {
+            matched()
+        } else {
+            unmatched()
+        }
+    }
+}
+
 for (let i = 0; i < cards.length; i += 1) {
     card = cards[i];
     card.addEventListener('click', displayCard);
