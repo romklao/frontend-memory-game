@@ -40,7 +40,7 @@ function shuffle(array) {
  */
 
 let cards = document.querySelectorAll('.card');
-var openCards = [];
+var openedCards = [];
 
 function displayCard() {
     this.classList.toggle('open');
@@ -49,18 +49,28 @@ function displayCard() {
 }
 
 function matched() {
-    openCards[0].classList.add('match', 'disabled');
-    openCards[1].classList.add('match', 'disabled');
-    openCards[0].classList.remove('open', 'show');
-    openCards[1].classList.remove('open', 'show');
-    openCards = [];
+    openedCards[0].classList.add('match', 'disabled');
+    openedCards[1].classList.add('match', 'disabled');
+    openedCards[0].classList.remove('open', 'show');
+    openedCards[1].classList.remove('open', 'show');
+    openedCards = [];
+}
+
+function unmatched() {
+    openedCards[0].classList.add('unmatch');
+    openedCards[1].classList.add('unmatch');
+    setTimeout(function() {
+        openedCards[0].classList.remove('open', 'show');
+        openedCards[1].classList.remove('open', 'show');
+        openedCards = [];
+    }, 1200);
 }
 
 function openCard() {
-    openCards.push(this);
-    let len = openCards.length;
+    openedCards.push(this);
+    let len = openedCards.length;
     if (len === 2) {
-        if (openCards[0].children[0].className === openCards[1].children[0].className) {
+        if (openedCards[0].children[0].className === openedCards[1].children[0].className) {
             matched()
         } else {
             unmatched()
