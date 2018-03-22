@@ -42,6 +42,7 @@ let cards = document.querySelectorAll('.card');
 let moveCount = document.querySelector('.moves');
 let stars = document.querySelectorAll('.fa-star');
 let matchedCard = document.getElementsByClassName('match');
+let movesRecord = document.querySelector('.movesRecord')
 let moves = 0;
 var openedCards = [];
 
@@ -101,6 +102,7 @@ function moveCounter() {
 
 function congratulations() {
     if (matchedCard.length === 16) {
+        movesRecord.innerHTML = moves;
         console.log('done');
     }
 }

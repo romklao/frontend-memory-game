@@ -131,7 +131,7 @@ h1 {
 }
 
 .balloons {
-    width: 40px;
+    width: 50px;
 }
 
 .fa-star {
@@ -144,20 +144,25 @@ h1 {
 }
 
 .congrat a {
-    position: relative;
-    left: 29.5em;
-    top: 2.8em;
+    display: inline-block;
+    float: right;
+    font-size: 25px;
+    padding: 40px 0;
     text-decoration: none;
-    font-size: 1.4em;
 }
 
 .congrat p {
     font-size: 30px;
+    display: inline-block;
 }
 
 .record {
-    position: relative;
-    left: 50%;
+    overflow: auto;
+    text-align: center;
+}
+
+.record p {
+    font-size: 20px;
 }
 
 
