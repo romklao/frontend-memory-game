@@ -48,6 +48,14 @@ function displayCard() {
     this.classList.toggle('disabled');
 }
 
+function matched() {
+    openCards[0].classList.add('match', 'disabled');
+    openCards[1].classList.add('match', 'disabled');
+    openCards[0].classList.remove('open', 'show');
+    openCards[1].classList.remove('open', 'show');
+    openCards = [];
+}
+
 function openCard() {
     openCards.push(this);
     let len = openCards.length;
@@ -59,6 +67,7 @@ function openCard() {
         }
     }
 }
+
 
 for (let i = 0; i < cards.length; i += 1) {
     card = cards[i];
