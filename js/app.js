@@ -43,9 +43,7 @@ let cards = document.querySelectorAll('.card');
 var openedCards = [];
 
 function displayCard() {
-    this.classList.toggle('open');
-    this.classList.toggle('show');
-    this.classList.toggle('disabled');
+    this.classList.add('open', 'show');
 }
 
 function matched() {
@@ -60,10 +58,10 @@ function unmatched() {
     openedCards[0].classList.add('unmatch');
     openedCards[1].classList.add('unmatch');
     setTimeout(function() {
-        openedCards[0].classList.remove('open', 'show');
-        openedCards[1].classList.remove('open', 'show');
+        openedCards[0].classList.remove('open', 'show', 'unmatch');
+        openedCards[1].classList.remove('open', 'show', 'unmatch');
         openedCards = [];
-    }, 1200);
+    }, 1000);
 }
 
 function openCard() {
@@ -77,7 +75,6 @@ function openCard() {
         }
     }
 }
-
 
 for (let i = 0; i < cards.length; i += 1) {
     card = cards[i];
