@@ -39,25 +39,18 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+let cards = document.querySelectorAll('.card');
+var openCards = [];
 
-function cardGame() {
-    let unorderList = document.querySelector('.deck');
-    console.log(unorderList);
-    let lists = unorderList.querySelectorAll('.card');
-    console.log(lists);
-    console.log(lists.length);
-
-    for (let i = 0; i < lists.length; i += 1) {
-        let current = lists[i];
-        current.addEventListener('click', function (event) {
-            event.preventDefault();
-            this.classList.add('open', 'show');
-        });
-    }
+function displayCard() {
+    this.classList.toggle('open');
+    this.classList.toggle('show');
+    this.classList.toggle('disabled');
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    cardGame()
-});
-
+for (let i = 0; i < cards.length; i += 1) {
+    card = cards[i];
+    card.addEventListener('click', displayCard);
+    card.addEventListener('click', openCard);
+}
 
