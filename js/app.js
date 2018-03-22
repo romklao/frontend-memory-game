@@ -27,7 +27,6 @@ function shuffle(array) {
     return array;
 }
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -40,6 +39,10 @@ function shuffle(array) {
  */
 
 let cards = document.querySelectorAll('.card');
+let moveCount = document.querySelector('.moves');
+let stars = document.querySelectorAll('.fa-star');
+let matchedCard = document.getElementsByClassName('match');
+let moves = 0;
 var openedCards = [];
 
 function displayCard() {
@@ -61,13 +64,14 @@ function unmatched() {
         openedCards[0].classList.remove('open', 'show', 'unmatch');
         openedCards[1].classList.remove('open', 'show', 'unmatch');
         openedCards = [];
-    }, 1000);
+    }, 800);
 }
 
 function openCard() {
     openedCards.push(this);
     let len = openedCards.length;
     if (len === 2) {
+        moveCounter();
         if (openedCards[0].children[0].className === openedCards[1].children[0].className) {
             matched()
         } else {
@@ -76,9 +80,35 @@ function openCard() {
     }
 }
 
-for (let i = 0; i < cards.length; i += 1) {
+function moveCounter() {
+    moves += 1;
+    moveCount.innerHTML = moves;
+    if (moves > 5 && moves < 11) {
+        for (i = 0; i < 3; i++) {
+            if (i > 1) {
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+    else if (moves > 12) {
+        for (i = 0; i < 3; i++) {
+            if (i > 0) {
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
+}
+
+function congratulations() {
+    if (matchedCard.length === 16) {
+        console.log('done');
+    }
+}
+
+for (var i = 0; i < cards.length; i++) {
     card = cards[i];
     card.addEventListener('click', displayCard);
     card.addEventListener('click', openCard);
+    card.addEventListener('click', congratulations);
 }
 
