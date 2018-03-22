@@ -123,6 +123,7 @@ h1 {
 
 /*.overlay {
     display: none;
+    width: 660px;
 }*/
 
 .trophy {
@@ -136,6 +137,27 @@ h1 {
 .fa-star {
     color: #f7d205;
     font-size: 21px;
+}
+
+.congrat {
+    width: 660px;
+}
+
+.congrat a {
+    position: relative;
+    left: 29.5em;
+    top: 2.8em;
+    text-decoration: none;
+    font-size: 1.4em;
+}
+
+.congrat p {
+    font-size: 30px;
+}
+
+.record {
+    position: relative;
+    left: 50%;
 }
 
 
