@@ -42,7 +42,9 @@ let cards = document.querySelectorAll('.card');
 let moveCount = document.querySelector('.moves');
 let stars = document.querySelectorAll('.fa-star');
 let matchedCard = document.getElementsByClassName('match');
-let movesRecord = document.querySelector('.movesRecord')
+let movesRecord = document.querySelector('.movesRecord');
+let close = document.querySelector('#close');
+let overlay = document.querySelector('.overlay');
 let moves = 0;
 var openedCards = [];
 
@@ -94,7 +96,7 @@ function moveCounter() {
     else if (moves > 12) {
         for (i = 0; i < 3; i++) {
             if (i > 0) {
-                stars[i].style.visibility = "collapse";
+                stars[i].style.visibility = 'collapse';
             }
         }
     }
