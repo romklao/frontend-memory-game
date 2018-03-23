@@ -2,7 +2,6 @@
  * Create a list that holds all of your cards
  */
 
-
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -23,7 +22,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -42,7 +40,6 @@ let cards = document.querySelectorAll('.card');
 let moveCount = document.querySelector('.moves');
 let stars = document.querySelectorAll('.fa-star');
 let matchedCard = document.getElementsByClassName('match');
-let movesRecord = document.querySelector('.movesRecord');
 let close = document.querySelector('#close');
 let overlay = document.querySelector('.overlay');
 let moves = 0;
@@ -102,19 +99,20 @@ function moveCounter() {
     }
 }
 
-function congratulations() {
-    if (matchedCard.length === 16) {
-        movesRecord.innerHTML = moves;
-        overlay.classList.add('showModal');
-        console.log('done');
-    }
-    closeModal();
-}
-
 function closeModal() {
     close.addEventListener('click', function() {
         overlay.classList.remove('showModal');
     });
+}
+
+function congratulations() {
+    if (matchedCard.length === 16) {
+        overlay.classList.add('showModal');
+        let starsRating = document.querySelector('.stars').innerHTML;
+        document.querySelector('.movesRecord').innerHTML = moves;
+        document.querySelector('.rating').innerHTML = starsRating;
+    }
+    closeModal();
 }
 
 for (var i = 0; i < cards.length; i++) {
