@@ -190,13 +190,14 @@ h1 {
 }
 
 .record button {
+    cursor: pointer;
     padding: 5px 45px;
     background: linear-gradient(160deg, #02ccba 0%, #02ccba 100%);
     color: white;
     font-size: 19px;
     border-radius: 5px;
     font-family: 'Coda', cursive;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 2px 2px 20px 0 rgba(46, 61, 73, 0.3);
 }
 
 .rating li {
