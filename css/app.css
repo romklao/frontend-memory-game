@@ -84,6 +84,7 @@ h1 {
     cursor: default;
     background: #0bf3cdf5;
     font-size: 33px;
+    pointer-events: none;
 }
 
 .deck .card.disabled {

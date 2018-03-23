@@ -69,7 +69,7 @@ function startGame() {
 }
 
 function displayCard() {
-    this.classList.add('open', 'show');
+    this.classList.add('open', 'show', 'disabled');
 }
 
 function disable() {
@@ -85,8 +85,8 @@ function enable() {
 }
 
 function matched() {
-    openedCards[0].classList.add('match', 'disabled');
-    openedCards[1].classList.add('match', 'disabled');
+    openedCards[0].classList.add('match');
+    openedCards[1].classList.add('match');
     openedCards[0].classList.remove('open', 'show');
     openedCards[1].classList.remove('open', 'show');
     openedCards = [];
@@ -110,9 +110,9 @@ function openCard() {
     if (len === 2) {
         moveCounter();
         if (openedCards[0].children[0].className === openedCards[1].children[0].className) {
-            matched()
+            matched();
         } else {
-            unmatched()
+            unmatched();
         }
     }
 }
