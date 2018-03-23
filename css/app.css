@@ -59,7 +59,7 @@ header {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    background: #141214e0;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -107,7 +107,7 @@ header {
 .score-panel {
     text-align: left;
     width: 340px;
-    margin: 25px 0 20px;
+    margin: 15px 0 20px;
 }
 
 .score-panel .stars {
@@ -267,7 +267,7 @@ header {
     }
 }
 
-@media screen and (min-width: 441px) and (max-width: 660px) {
+@media screen and (min-width: 441px) and (max-width: 650px) {
     .deck {
         width: 100%;
         padding: 1em;
@@ -278,7 +278,7 @@ header {
     }
 }
 
-@media screen and (min-width: 661px) and (max-width: 780px) {
+@media screen and (min-width: 651px) and (max-width: 780px) {
     .deck {
         width: 90%;
         padding: 2em;
