@@ -18,7 +18,7 @@ body {
 
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    font-family: Itim, cursive;
 }
 
 .container {
@@ -26,15 +26,16 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 35px;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Itim, sans-serif;
     font-weight: 300;
 }
 
 header {
-    margin-top: 35px;
+    font-size: 1.3em;
 }
 
 /*
@@ -105,8 +106,8 @@ header {
 
 .score-panel {
     text-align: left;
-    width: 345px;
-    margin: 25px 0 10px;
+    width: 370px;
+    margin: 25px 0 20px;
 }
 
 .score-panel .stars {
@@ -120,6 +121,24 @@ header {
     list-style: none;
     display: inline-block;
     visibility: hidden;
+}
+
+.fa-star {
+    color: #f7d205;
+    font-size: 25px;
+}
+
+.fa-repeat {
+    color: #ea531be8;
+    font-size: 27px;
+}
+
+.score-panel .moves-word, .score-panel .moves {
+    font-size: 25px;
+}
+
+.score-panel .moves {
+    margin-left: 15px;
 }
 
 .score-panel .restart {
@@ -161,16 +180,6 @@ header {
 
 .balloons {
     width: 50px;
-}
-
-.fa-star {
-    color: #f7d205;
-    font-size: 21px;
-}
-
-.fa-repeat {
-    color: #ea531be8;
-    font-size: 23px;
 }
 
 .congrat a {
