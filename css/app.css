@@ -33,6 +33,10 @@ h1 {
     font-weight: 300;
 }
 
+header {
+    margin-top: 35px;
+}
+
 /*
  * Styles for the deck of cards
  */
