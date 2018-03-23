@@ -35,15 +35,36 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
-let cards = document.querySelectorAll('.card');
+let card = document.getElementsByClassName("card");
+let cards = [...card];
+console.log(cards);
 let moveCount = document.querySelector('.moves');
+let deck = document.querySelector('.deck');
 let stars = document.querySelectorAll('.fa-star');
 let matchedCard = document.getElementsByClassName('match');
 let close = document.querySelector('#close');
 let overlay = document.querySelector('.overlay');
+let restart = document.querySelector('.restart');
+console.log(restart);
 let moves = 0;
 var openedCards = [];
+
+
+function startGame() {
+    cards = shuffle(cards);
+    deck.innerHTML = '';
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove('show', 'open', 'match', 'disabled');
+        deck.appendChild(cards[i]);
+    }
+    moves = 0;
+    moveCount.innerHTML = moves;
+    for (i = 0; i < 3; i++) {
+        if(i >= 0) {
+            stars[i].style.visibility = 'visible';
+        }
+    }
+}
 
 function displayCard() {
     this.classList.add('open', 'show');
@@ -84,14 +105,14 @@ function moveCounter() {
     moves += 1;
     moveCount.innerHTML = moves;
     if (moves > 5 && moves < 11) {
-        for (i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
             if (i > 1) {
                 stars[i].style.visibility = "collapse";
             }
         }
     }
-    else if (moves > 12) {
-        for (i = 0; i < 3; i++) {
+    else if (moves > 11) {
+        for (let i = 0; i < 3; i++) {
             if (i > 0) {
                 stars[i].style.visibility = 'collapse';
             }
@@ -102,6 +123,7 @@ function moveCounter() {
 function closeModal() {
     close.addEventListener('click', function() {
         overlay.classList.remove('showModal');
+        startGame();
     });
 }
 
@@ -115,10 +137,20 @@ function congratulations() {
     closeModal();
 }
 
-for (var i = 0; i < cards.length; i++) {
-    card = cards[i];
+function addRestartGameListener() {
+    restart.addEventListener('click', startGame);
+}
+
+for (let i = 0; i < cards.length; i++) {
+    let card = cards[i];
     card.addEventListener('click', displayCard);
     card.addEventListener('click', openCard);
     card.addEventListener('click', congratulations);
 }
+
+document.addEventListener('DOMContentLoaded', function(){
+    addRestartGameListener();
+    startGame();
+});
+
 

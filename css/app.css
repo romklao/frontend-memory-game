@@ -114,6 +114,7 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+    visibility: hidden;
 }
 
 .score-panel .restart {
