@@ -197,7 +197,7 @@ header {
 }
 
 .congrat p {
-    font-size: 30px;
+    font-size: 35px;
     display: inline-block;
 }
 
@@ -207,7 +207,7 @@ header {
 }
 
 .record p {
-    font-size: 20px;
+    font-size: 25px;
     line-height: 40px;
 }
 
@@ -216,9 +216,9 @@ header {
     padding: 5px 45px;
     background: linear-gradient(160deg, #02ccba 0%, #02ccba 100%);
     color: white;
-    font-size: 19px;
+    font-size: 25px;
     border-radius: 5px;
-    font-family: 'Coda', cursive;
+    font-family: Itim, cursive;
     box-shadow: 2px 2px 20px 0 rgba(46, 61, 73, 0.3);
 }
 
