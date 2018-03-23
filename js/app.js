@@ -87,8 +87,8 @@ function enable() {
 function matched() {
     openedCards[0].classList.add('match');
     openedCards[1].classList.add('match');
-    openedCards[0].classList.remove('open', 'show');
-    openedCards[1].classList.remove('open', 'show');
+    openedCards[0].classList.remove('open', 'show', 'disabled');
+    openedCards[1].classList.remove('open', 'show', 'disabled');
     openedCards = [];
 }
 
