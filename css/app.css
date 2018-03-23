@@ -89,6 +89,10 @@ header {
     background: #0bf3cdf5;
     font-size: 33px;
     pointer-events: none;
+    animation-name: rubberBand;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
 }
 
 .deck .card.disabled {
@@ -265,7 +269,37 @@ header {
     }
 
     50% {
-        transform: scale3d(1.09, 1.09, 1.09);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes rubberBand {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        transform: scale3d(.95, 1.05, 1);
+    }
+
+    75% {
+        transform: scale3d(1.05, .95, 1);
     }
 
     to {
@@ -278,29 +312,42 @@ header {
     .deck {
         width: 100%;
         min-height: 30em;
-        padding: 8px;
+        padding: 10px;
     }
     .deck .card {
-        height: 100px;
-        width: 23%;
+        height: 97px;
+        width: 22.5%;
     }
 }
 
-@media screen and (min-width: 441px) and (max-width: 650px) {
+@media screen and (min-width: 441px) and (max-width: 550px) {
     .deck {
         width: 100%;
-        padding: 1em;
+        min-height: 34em;
+        padding: 10px;
     }
     .deck .card {
-        height: 125px;
+        height: 105px;
+        width: 22.5%;
+    }
+}
+
+
+@media screen and (min-width: 550px) and (max-width: 640px) {
+    .deck {
+        width: 100%;
+        padding: 1.5em;
+    }
+    .deck .card {
+        height: 120px;
         width: 23%;
     }
 }
 
-@media screen and (min-width: 651px) and (max-width: 780px) {
+@media screen and (min-width: 641px) and (max-width: 780px) {
     .deck {
         width: 90%;
-        padding: 2em;
+        padding: 1.5em;
     }
 }
 
