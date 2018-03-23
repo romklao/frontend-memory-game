@@ -9,6 +9,8 @@
  *   - add each card's HTML to the page
  */
 
+(function () {
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -37,7 +39,6 @@ function shuffle(array) {
  */
 let card = document.getElementsByClassName("card");
 let cards = [...card];
-console.log(cards);
 let moveCount = document.querySelector('.moves');
 let deck = document.querySelector('.deck');
 let stars = document.querySelectorAll('.fa-star');
@@ -45,7 +46,6 @@ let matchedCard = document.getElementsByClassName('match');
 let close = document.querySelector('#close');
 let overlay = document.querySelector('.overlay');
 let restart = document.querySelector('.restart');
-console.log(restart);
 let moves = 0;
 var openedCards = [];
 
@@ -59,7 +59,7 @@ function startGame() {
     }
     moves = 0;
     moveCount.innerHTML = moves;
-    for (i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         if(i >= 0) {
             stars[i].style.visibility = 'visible';
         }
@@ -153,4 +153,5 @@ document.addEventListener('DOMContentLoaded', function(){
     startGame();
 });
 
+})();
 
