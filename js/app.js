@@ -69,31 +69,37 @@ function startGame() {
 }
 
 function displayCard() {
-    this.classList.add('open', 'show', 'disabled');
+    this.classList.add('open', 'show');
 }
 
-// function disable() {
-//     card.classList.add('disabled');
-// }
+function disable() {
+    cards.forEach(function(card) {
+        card.classList.add('disabled');
+    });
+}
 
-// function able() {
-//     card.classList.remove('disabled');
-// }
+function enable() {
+    cards.forEach(function(card) {
+        card.classList.remove('disabled');
+    });
+}
 
 function matched() {
-    openedCards[0].classList.add('match');
-    openedCards[1].classList.add('match');
-    openedCards[0].classList.remove('open', 'show', 'disabled');
-    openedCards[1].classList.remove('open', 'show', 'disabled');
+    openedCards[0].classList.add('match', 'disabled');
+    openedCards[1].classList.add('match', 'disabled');
+    openedCards[0].classList.remove('open', 'show');
+    openedCards[1].classList.remove('open', 'show');
     openedCards = [];
 }
 
 function unmatched() {
     openedCards[0].classList.add('unmatch');
     openedCards[1].classList.add('unmatch');
+    disable();
     setTimeout(function() {
-        openedCards[0].classList.remove('open', 'show', 'unmatch', 'disabled');
-        openedCards[1].classList.remove('open', 'show', 'unmatch', 'disabled');
+        openedCards[0].classList.remove('open', 'show', 'unmatch');
+        openedCards[1].classList.remove('open', 'show', 'unmatch');
+        enable();
         openedCards = [];
     }, 800);
 }
