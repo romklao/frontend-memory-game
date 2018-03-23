@@ -333,20 +333,20 @@ header {
 }
 
 
-@media screen and (min-width: 550px) and (max-width: 640px) {
+@media screen and (min-width: 550px) and (max-width: 660px) {
     .deck {
         width: 100%;
         padding: 1.5em;
     }
     .deck .card {
-        height: 120px;
+        height: 122px;
         width: 23%;
     }
 }
 
-@media screen and (min-width: 641px) and (max-width: 780px) {
+@media screen and (min-width: 661px) and (max-width: 780px) {
     .deck {
-        width: 90%;
+        width: 88%;
         padding: 1.5em;
     }
 }
