@@ -131,6 +131,12 @@ header {
 .fa-repeat {
     color: #ea531be8;
     font-size: 27px;
+    transition: all .2s ease-in-out;
+}
+
+.fa-repeat:hover {
+    transform: scale(1.25);
+    color: #dc4311;
 }
 
 .score-panel .moves-word, .score-panel .moves {
