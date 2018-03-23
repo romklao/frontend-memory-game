@@ -258,7 +258,7 @@ header {
 @media screen and (max-width: 440px) {
     .deck {
         width: 100%;
-        min-height: 32em;
+        min-height: 30em;
         padding: 8px;
     }
     .deck .card {
@@ -280,8 +280,8 @@ header {
 
 @media screen and (min-width: 661px) and (max-width: 780px) {
     .deck {
-        width: 86%;
-        padding: 1.5em;
+        width: 90%;
+        padding: 2em;
     }
 }
 
