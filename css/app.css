@@ -97,7 +97,11 @@ header {
 }
 
 .deck .card.unmatch {
-    background: #FB5A52FF;
+    background: #FA3940FF;
+    animation-name: pulse;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
 }
 
 /*
@@ -254,6 +258,21 @@ header {
         transform: perspective(400px);
     }
 }
+
+@keyframes pulse {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(1.09, 1.09, 1.09);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
 
 @media screen and (max-width: 440px) {
     .deck {
