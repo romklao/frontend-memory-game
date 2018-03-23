@@ -171,7 +171,7 @@ header {
 }
 
 .popup {
-    width: 660px;
+    width: 42em;
     margin-left: auto;
     margin-right: auto;
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
@@ -267,21 +267,9 @@ header {
     }
 }
 
-@media screen and (min-width: 441px) and (max-width: 550px) {
+@media screen and (min-width: 441px) and (max-width: 660px) {
     .deck {
         width: 100%;
-        min-height: 35em;
-        padding: 1em;
-    }
-    .deck .card {
-        height: 110px;
-        width: 23%;
-    }
-}
-
-@media screen and (min-width: 551px) and (max-width: 670px) {
-    .deck {
-        width: 94%;
         padding: 1em;
     }
     .deck .card {
@@ -290,14 +278,16 @@ header {
     }
 }
 
-@media screen and (min-width: 671px) and (max-width: 780px) {
+@media screen and (min-width: 661px) and (max-width: 780px) {
     .deck {
         width: 86%;
         padding: 1.5em;
     }
-    .deck .card {
-        height: 125px;
-        width: 125px;
+}
+
+@media screen and (max-width: 670px) {
+    .popup {
+        width: 100%;
     }
 }
 
