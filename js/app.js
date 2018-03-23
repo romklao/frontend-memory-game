@@ -105,8 +105,16 @@ function moveCounter() {
 function congratulations() {
     if (matchedCard.length === 16) {
         movesRecord.innerHTML = moves;
+        overlay.classList.add('showModal');
         console.log('done');
     }
+    closeModal();
+}
+
+function closeModal() {
+    close.addEventListener('click', function() {
+        overlay.classList.remove('showModal');
+    });
 }
 
 for (var i = 0; i < cards.length; i++) {

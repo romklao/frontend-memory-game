@@ -131,8 +131,13 @@ h1 {
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
-    /*visibility: visible !important;
-    opacity: 100 !important;*/
+    visibility: hidden;
+    opacity: 0;
+}
+
+.showModal {
+    visibility: visible !important;
+    opacity: 100 !important;
 }
 
 .popup {
