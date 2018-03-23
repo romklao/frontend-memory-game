@@ -46,6 +46,8 @@ let matchedCard = document.getElementsByClassName('match');
 let close = document.querySelector('#close');
 let overlay = document.querySelector('.overlay');
 let restart = document.querySelector('.restart');
+let playAgain = document.getElementById('play-again');
+
 let moves = 0;
 var openedCards = [];
 
@@ -67,14 +69,22 @@ function startGame() {
 }
 
 function displayCard() {
-    this.classList.add('open', 'show');
+    this.classList.add('open', 'show', 'disabled');
 }
 
+// function disable() {
+//     card.classList.add('disabled');
+// }
+
+// function able() {
+//     card.classList.remove('disabled');
+// }
+
 function matched() {
-    openedCards[0].classList.add('match', 'disabled');
-    openedCards[1].classList.add('match', 'disabled');
-    openedCards[0].classList.remove('open', 'show');
-    openedCards[1].classList.remove('open', 'show');
+    openedCards[0].classList.add('match');
+    openedCards[1].classList.add('match');
+    openedCards[0].classList.remove('open', 'show', 'disabled');
+    openedCards[1].classList.remove('open', 'show', 'disabled');
     openedCards = [];
 }
 
@@ -82,8 +92,8 @@ function unmatched() {
     openedCards[0].classList.add('unmatch');
     openedCards[1].classList.add('unmatch');
     setTimeout(function() {
-        openedCards[0].classList.remove('open', 'show', 'unmatch');
-        openedCards[1].classList.remove('open', 'show', 'unmatch');
+        openedCards[0].classList.remove('open', 'show', 'unmatch', 'disabled');
+        openedCards[1].classList.remove('open', 'show', 'unmatch', 'disabled');
         openedCards = [];
     }, 800);
 }
@@ -131,14 +141,22 @@ function congratulations() {
     if (matchedCard.length === 16) {
         overlay.classList.add('showModal');
         let starsRating = document.querySelector('.stars').innerHTML;
-        document.querySelector('.movesRecord').innerHTML = moves;
+        document.querySelector('.moves-record').innerHTML = moves;
         document.querySelector('.rating').innerHTML = starsRating;
     }
     closeModal();
+    addPlayAgainListener();
 }
 
 function addRestartGameListener() {
     restart.addEventListener('click', startGame);
+}
+
+function addPlayAgainListener() {
+    playAgain.addEventListener('click', function() {
+        overlay.classList.remove('showModal');
+        startGame();
+    });
 }
 
 for (let i = 0; i < cards.length; i++) {
