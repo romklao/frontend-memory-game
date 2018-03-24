@@ -345,9 +345,9 @@ header {
     }
 }
 
-@media screen and (min-width: 661px) and (max-width: 780px) {
+@media screen and (min-width: 661px) and (max-width: 768px) {
     .deck {
-        width: 88%;
+        width: 86%;
         padding: 1.5em;
     }
 }
