@@ -173,8 +173,8 @@ header {
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 400ms;
-    visibility: hidden;
-    opacity: 0;
+    /*visibility: hidden;
+    opacity: 0;*/
 }
 
 .showModal {
@@ -322,6 +322,9 @@ header {
     .deck .card {
         height: 97px;
         width: 22.5%;
+    }
+    .popup {
+        padding: 10px 20px 30px;
     }
 }
 
