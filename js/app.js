@@ -167,9 +167,9 @@ function addPlayAgainListener() {
 
 for (let i = 0; i < cards.length; i++) {
     let card = cards[i];
-    card.addEventListener('mousedown', displayCard);
-    card.addEventListener('mousedown', openCard);
-    card.addEventListener('mousedown', congratulations);
+    card.addEventListener('click', displayCard);
+    card.addEventListener('click', openCard);
+    card.addEventListener('click', congratulations);
 }
 
 document.addEventListener('DOMContentLoaded', function(){
