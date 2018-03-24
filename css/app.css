@@ -199,7 +199,7 @@ header {
 .congrat a {
     display: inline-block;
     float: right;
-    font-size: 25px;
+    font-size: 28px;
     padding: 20px 0;
     text-decoration: none;
 }
@@ -307,6 +307,7 @@ header {
     }
 }
 
+/*Media queries*/
 
 @media screen and (max-width: 440px) {
     .deck {

@@ -120,14 +120,14 @@ function openCard() {
 function moveCounter() {
     moves += 1;
     moveCount.innerHTML = moves;
-    if (moves > 5 && moves < 11) {
+    if (moves > 10 && moves < 14) {
         for (let i = 0; i < 3; i++) {
             if (i > 1) {
                 stars[i].style.visibility = "collapse";
             }
         }
     }
-    else if (moves > 11) {
+    else if (moves > 14) {
         for (let i = 0; i < 3; i++) {
             if (i > 0) {
                 stars[i].style.visibility = 'collapse';
