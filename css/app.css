@@ -49,7 +49,7 @@ header {
 .deck {
     width: 660px;
     min-height: 43em;
-    background: linear-gradient(160deg, #cc029752 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #27252E52 0%, #43404B 100%);
     padding: 2em;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -63,7 +63,7 @@ header {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #141214e0;
+    background: #0a000a;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
