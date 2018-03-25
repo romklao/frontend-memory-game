@@ -62,9 +62,7 @@ function startGame() {
     moves = 0;
     moveCount.innerHTML = moves;
     for (let i = 0; i < 3; i++) {
-        if(i >= 0) {
-            stars[i].style.visibility = 'visible';
-        }
+        stars[i].style.visibility = 'visible';
     }
 }
 
@@ -104,19 +102,6 @@ function unmatched() {
     }, 800);
 }
 
-function openCard() {
-    openedCards.push(this);
-    let len = openedCards.length;
-    if (len === 2) {
-        moveCounter();
-        if (openedCards[0].children[0].className === openedCards[1].children[0].className) {
-            matched();
-        } else {
-            unmatched();
-        }
-    }
-}
-
 function moveCounter() {
     moves += 1;
     moveCount.innerHTML = moves;
@@ -132,6 +117,19 @@ function moveCounter() {
             if (i > 0) {
                 stars[i].style.visibility = 'collapse';
             }
+        }
+    }
+}
+
+function openCard() {
+    openedCards.push(this);
+    let len = openedCards.length;
+    if (len === 2) {
+        moveCounter();
+        if (openedCards[0].children[0].className === openedCards[1].children[0].className) {
+            matched();
+        } else {
+            unmatched();
         }
     }
 }
