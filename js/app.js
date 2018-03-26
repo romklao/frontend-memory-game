@@ -9,7 +9,36 @@
  *   - add each card's HTML to the page
  */
 
+
+/*
+ * set up the event listener for a card. If a card is clicked:
+ *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ *  - if the list already has another card, check to see if the two cards match
+ *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */
 (function () {
+
+let card = document.getElementsByClassName("card");
+let cards = [...card];
+let moveCount = document.querySelector('.moves');
+let deck = document.querySelector('.deck');
+let stars = document.querySelectorAll('.fa-star');
+let matchedCard = document.getElementsByClassName('match');
+let close = document.querySelector('#close');
+let overlay = document.querySelector('.overlay');
+let restart = document.querySelector('.restart');
+let playAgain = document.getElementById('play-again');
+let timer = document.querySelector('.timer');
+
+let moves = 0;
+let mins = 0, secs = 0, hrs = 0;
+let interval;
+let openedCards = [];
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -27,30 +56,22 @@ function shuffle(array) {
     return array;
 }
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-let card = document.getElementsByClassName("card");
-let cards = [...card];
-let moveCount = document.querySelector('.moves');
-let deck = document.querySelector('.deck');
-let stars = document.querySelectorAll('.fa-star');
-let matchedCard = document.getElementsByClassName('match');
-let close = document.querySelector('#close');
-let overlay = document.querySelector('.overlay');
-let restart = document.querySelector('.restart');
-let playAgain = document.getElementById('play-again');
+function setTimer() {
+    timer.innerHTML = mins + " mins " + secs + " secs";
+    sec += 1;
+    if (secs === 60) {
+        mins += 1;
+        secs = 0;
+    }
+    if (mins === 60) {
+        hrs += 1;
+        mins = 0;
+    }
+}
 
-let moves = 0;
-var openedCards = [];
-
+function startTimer() {
+    interval = setInterval(setTimer, 1000);
+}
 
 function startGame() {
     cards = shuffle(cards);
@@ -59,11 +80,17 @@ function startGame() {
         cards[i].classList.remove('show', 'open', 'match', 'disabled');
         deck.appendChild(cards[i]);
     }
+
     moves = 0;
     moveCount.innerHTML = moves;
+
     for (let i = 0; i < 3; i++) {
         stars[i].style.visibility = 'visible';
     }
+
+    mins = 0;
+    secs = 0;
+    timer.innerHTML = mins + " mins " + secs + " secs";
 }
 
 function displayCard() {
@@ -136,14 +163,14 @@ function openCard() {
 
 function closeModal() {
     close.addEventListener('click', function() {
-        overlay.classList.remove('showModal');
+        overlay.classList.remove('show-modal');
         startGame();
     });
 }
 
 function congratulations() {
     if (matchedCard.length === 16) {
-        overlay.classList.add('showModal');
+        overlay.classList.add('show-modal');
         let starsRating = document.querySelector('.stars').innerHTML;
         document.querySelector('.moves-record').innerHTML = moves;
         document.querySelector('.rating').innerHTML = starsRating;
@@ -158,7 +185,7 @@ function addRestartGameListener() {
 
 function addPlayAgainListener() {
     playAgain.addEventListener('click', function() {
-        overlay.classList.remove('showModal');
+        overlay.classList.remove('show-modal');
         startGame();
     });
 }
