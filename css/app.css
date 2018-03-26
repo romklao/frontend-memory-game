@@ -156,12 +156,12 @@ header {
 }
 
 .score-panel .moves {
-    margin-left: 13px;
+    margin-left: 6px;
 }
 
 .score-panel .timer {
-    font-size: 20px;
-    margin-left: 8px;
+    font-size: 23px;
+    margin-left: 3px;
 }
 
 .score-panel .restart {
@@ -229,8 +229,13 @@ header {
     line-height: 40px;
 }
 
+.time-record {
+    margin-left: 5px;
+}
+
 .record button {
     cursor: pointer;
+    margin-top: 17px;
     padding: 5px 45px;
     background: linear-gradient(160deg, #02ccba 0%, #02ccba 100%);
     box-shadow: 1px 20px 20px 0 rgba(46, 61, 73, 0.3);

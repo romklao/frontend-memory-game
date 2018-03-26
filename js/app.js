@@ -40,7 +40,6 @@ let min = 0, sec = 0, hr = 0;
 let interval;
 let openedCards = [];
 
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -58,7 +57,6 @@ function shuffle(array) {
 }
 
 function setTimer() {
-    timer.innerHTML = min + " mins " + sec + " secs";
     sec += 1;
     if (sec === 60) {
         min += 1;
@@ -68,6 +66,7 @@ function setTimer() {
         hr += 1;
         min = 0;
     }
+    timer.innerHTML = hr + 'h : ' + min + 'm : ' + sec + 's';
 }
 
 function startTimer() {
@@ -91,7 +90,8 @@ function startGame() {
 
     min = 0;
     sec = 0;
-    timer.innerHTML = min + " mins " + sec + " secs";
+    hr = 0;
+    timer.innerHTML = hr + 'h : ' + min + 'm : ' + sec + 's';
     clearInterval(interval);
 }
 
