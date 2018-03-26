@@ -172,12 +172,12 @@ header {
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.7);
-    transition: opacity 400ms;
+    transition: opacity 300ms;
     visibility: hidden;
     opacity: 0;
 }
 
-.showModal {
+.show-modal {
     visibility: visible !important;
     opacity: 100 !important;
 }
