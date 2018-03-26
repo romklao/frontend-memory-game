@@ -118,7 +118,7 @@ header {
 
 .score-panel {
     text-align: left;
-    width: 340px;
+    width: 380px;
     margin: 15px 0 20px;
 }
 
@@ -142,7 +142,7 @@ header {
 
 .fa-repeat {
     color: #ea531be8;
-    font-size: 27px;
+    font-size: 25px;
     transition: all .2s ease-in-out;
 }
 
@@ -156,12 +156,18 @@ header {
 }
 
 .score-panel .moves {
-    margin-left: 15px;
+    margin-left: 13px;
+}
+
+.score-panel .timer {
+    font-size: 20px;
+    margin-left: 8px;
 }
 
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    padding-top: 4px;
 }
 
 .overlay {
