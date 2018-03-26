@@ -32,10 +32,11 @@ let close = document.querySelector('#close');
 let overlay = document.querySelector('.overlay');
 let restart = document.querySelector('.restart');
 let playAgain = document.getElementById('play-again');
+let timeRecord = document.querySelector('.time-record');
 let timer = document.querySelector('.timer');
 
 let moves = 0;
-let mins = 0, secs = 0, hrs = 0;
+let min = 0, sec = 0, hr = 0;
 let interval;
 let openedCards = [];
 
@@ -57,15 +58,15 @@ function shuffle(array) {
 }
 
 function setTimer() {
-    timer.innerHTML = mins + " mins " + secs + " secs";
+    timer.innerHTML = min + " mins " + sec + " secs";
     sec += 1;
-    if (secs === 60) {
-        mins += 1;
-        secs = 0;
+    if (sec === 60) {
+        min += 1;
+        sec = 0;
     }
-    if (mins === 60) {
-        hrs += 1;
-        mins = 0;
+    if (min === 60) {
+        hr += 1;
+        min = 0;
     }
 }
 
@@ -88,9 +89,10 @@ function startGame() {
         stars[i].style.visibility = 'visible';
     }
 
-    mins = 0;
-    secs = 0;
-    timer.innerHTML = mins + " mins " + secs + " secs";
+    min = 0;
+    sec = 0;
+    timer.innerHTML = min + " mins " + sec + " secs";
+    clearInterval(interval);
 }
 
 function displayCard() {
@@ -132,6 +134,12 @@ function unmatched() {
 function moveCounter() {
     moves += 1;
     moveCount.innerHTML = moves;
+    if (moves === 1) {
+        min = 0;
+        sec = 0;
+        hr = 0;
+        startTimer();
+    }
     if (moves > 10 && moves < 14) {
         for (let i = 0; i < 3; i++) {
             if (i > 1) {
@@ -170,6 +178,9 @@ function closeModal() {
 
 function congratulations() {
     if (matchedCard.length === 16) {
+        clearInterval(interval);
+        timeRecord.innerHTML = timer.innerHTML;
+
         overlay.classList.add('show-modal');
         let starsRating = document.querySelector('.stars').innerHTML;
         document.querySelector('.moves-record').innerHTML = moves;
