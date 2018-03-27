@@ -9,7 +9,6 @@
  *   - add each card's HTML to the page
  */
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -22,19 +21,19 @@
  */
 (function () {
 
+const moveCount = document.querySelector('.moves');
+const deck = document.querySelector('.deck');
+const stars = document.querySelectorAll('.fa-star');
+const matchedCard = document.getElementsByClassName('match');
+const close = document.querySelector('#close');
+const overlay = document.querySelector('.overlay');
+const restart = document.querySelector('.restart');
+const playAgain = document.getElementById('play-again');
+const timeRecord = document.querySelector('.time-record');
+const timer = document.querySelector('.timer');
+
 let card = document.getElementsByClassName("card");
 let cards = [...card];
-let moveCount = document.querySelector('.moves');
-let deck = document.querySelector('.deck');
-let stars = document.querySelectorAll('.fa-star');
-let matchedCard = document.getElementsByClassName('match');
-let close = document.querySelector('#close');
-let overlay = document.querySelector('.overlay');
-let restart = document.querySelector('.restart');
-let playAgain = document.getElementById('play-again');
-let timeRecord = document.querySelector('.time-record');
-let timer = document.querySelector('.timer');
-
 let moves = 0;
 let min = 0, sec = 0, hr = 0;
 let interval;
@@ -42,7 +41,7 @@ let openedCards = [];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
         temporaryValue,
         randomIndex;
 
