@@ -100,9 +100,7 @@ function displayCard() {
 }
 
 function disable() {
-    cards.forEach(function(card) {
-        card.classList.add('disabled');
-    });
+    cards.forEach(card => card.classList.add('disabled'));
 }
 
 function enable() {
