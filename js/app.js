@@ -74,6 +74,7 @@ function startTimer() {
 
 function startGame() {
     cards = shuffle(cards);
+    openedCards = [];
     deck.innerHTML = '';
     for (let i = 0; i < cards.length; i++) {
         cards[i].classList.remove('show', 'open', 'match', 'disabled');
