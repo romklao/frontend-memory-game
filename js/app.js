@@ -104,9 +104,7 @@ function disable() {
 }
 
 function enable() {
-    cards.forEach(function(card) {
-        card.classList.remove('disabled');
-    });
+    cards.forEach(card => card.classList.remove('disabled'));
 }
 
 function matched() {
