@@ -46,19 +46,20 @@ const restart = document.querySelector('.restart');
 /* Play again button */
 const playAgain = document.getElementById('play-again');
 
-/* Declare timer record when finish playing game */
+/* Define timer record when finish playing game */
 const timeRecord = document.querySelector('.time-record');
 
-/* Declare timer when start playing game */
+/* Define timer when start playing game */
 const timer = document.querySelector('.timer');
 
-/* Declare move, min, sec and hr to 0 when start playing */
+/* Define move, min, sec and hr to 0 when start playing */
 let moves = 0;
 let min = 0, sec = 0, hr = 0;
 
-/* Declare openedCards to empty array*/
+/* Define openedCards to empty array*/
 let openedCards = [];
 
+/* Declare variables */
 let interval;
 let card,
     cards
