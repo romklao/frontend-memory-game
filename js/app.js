@@ -1,3 +1,4 @@
+"use strict";
 /*
  * Create a list that holds all of your cards
  */
@@ -22,7 +23,7 @@
 (function () {
 
 const moveCount = document.querySelector('.moves');
-const deck = document.querySelector('.deck');
+let deck = document.querySelector('.deck');
 const stars = document.querySelectorAll('.fa-star');
 const matchedCard = document.getElementsByClassName('match');
 const close = document.querySelector('#close');
@@ -32,14 +33,14 @@ const playAgain = document.getElementById('play-again');
 const timeRecord = document.querySelector('.time-record');
 const timer = document.querySelector('.timer');
 
-let card = document.getElementsByClassName("card");
-let cards = [...card];
 let moves = 0;
 let min = 0, sec = 0, hr = 0;
 let interval;
 let openedCards = [];
+let card,
+    cards
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+ // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     let currentIndex = array.length,
         temporaryValue,
@@ -76,10 +77,10 @@ function startGame() {
     cards = shuffle(cards);
     openedCards = [];
     deck.innerHTML = '';
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove('show', 'open', 'match', 'disabled');
-        deck.appendChild(cards[i]);
-    }
+    cards.forEach(card => {
+        card.classList.remove('show', 'open', 'match', 'disabled');
+        deck.appendChild(card);
+    });
 
     moves = 0;
     moveCount.innerHTML = moves;
@@ -100,11 +101,11 @@ function displayCard() {
 }
 
 function disable() {
-    cards.forEach(card => card.classList.add('disabled'));
+    deck.childNodes.forEach(card => card.classList.add('disabled'));
 }
 
 function enable() {
-    cards.forEach(card => card.classList.remove('disabled'));
+    deck.childNodes.forEach(card => card.classList.remove('disabled'));
 }
 
 function matched() {
@@ -166,10 +167,13 @@ function openCard() {
 }
 
 function closeModal() {
-    close.addEventListener('click', function() {
-        overlay.classList.remove('show-modal');
-        startGame();
-    });
+    overlay.classList.remove('show-modal');
+    startGame();
+}
+
+function addPlayAgainListener() {
+    overlay.classList.remove('show-modal');
+    startGame();
 }
 
 function congratulations() {
@@ -182,31 +186,41 @@ function congratulations() {
         document.querySelector('.moves-record').innerHTML = moves;
         document.querySelector('.rating').innerHTML = starsRating;
     }
-    closeModal();
-    addPlayAgainListener();
 }
 
-function addRestartGameListener() {
+function createCardDeck() {
+    let iconClassList = [
+        'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube',
+        'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf',
+        'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'
+    ];
+
+    for (let i = 0; i < iconClassList.length; i++) {
+        let list = document.createElement('li');
+        list.className = 'card';
+
+        let cardImage = document.createElement('i');
+        cardImage.className = iconClassList[i];
+
+        list.appendChild(cardImage);
+        list.addEventListener('click', displayCard);
+        list.addEventListener('click', openCard);
+        list.addEventListener('click', congratulations);
+
+        deck.appendChild(list);
+    }
+
+    card = document.getElementsByClassName('card');
+    cards = [...card];
+
+    close.addEventListener('click', closeModal);
+    playAgain.addEventListener('click', addPlayAgainListener);
     restart.addEventListener('click', startGame);
-}
-
-function addPlayAgainListener() {
-    playAgain.addEventListener('click', function() {
-        overlay.classList.remove('show-modal');
-        startGame();
-    });
-}
-
-for (let i = 0; i < cards.length; i++) {
-    let card = cards[i];
-    card.addEventListener('click', displayCard);
-    card.addEventListener('click', openCard);
-    card.addEventListener('click', congratulations);
+    startGame();
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    addRestartGameListener();
-    startGame();
+    createCardDeck();
 });
 
 })();
