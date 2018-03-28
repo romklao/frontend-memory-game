@@ -23,7 +23,6 @@
 (function () {
 
 const moveCount = document.querySelector('.moves');
-let deck = document.querySelector('.deck');
 const stars = document.querySelectorAll('.fa-star');
 const matchedCard = document.getElementsByClassName('match');
 const close = document.querySelector('#close');
@@ -32,6 +31,7 @@ const restart = document.querySelector('.restart');
 const playAgain = document.getElementById('play-again');
 const timeRecord = document.querySelector('.time-record');
 const timer = document.querySelector('.timer');
+const deck = document.querySelector('.deck');
 
 let moves = 0;
 let min = 0, sec = 0, hr = 0;
