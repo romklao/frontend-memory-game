@@ -101,7 +101,7 @@ function displayCard() {
 }
 
 function disable() {
-    deck.childNodes.forEach(card => card.classList.add('disabled'));
+    cards.forEach(card => card.classList.add('disabled'));
 }
 
 function enable() {
