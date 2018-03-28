@@ -22,25 +22,48 @@
  */
 (function () {
 
-const moveCount = document.querySelector('.moves');
-const stars = document.querySelectorAll('.fa-star');
-const matchedCard = document.getElementsByClassName('match');
-const close = document.querySelector('#close');
-const overlay = document.querySelector('.overlay');
-const restart = document.querySelector('.restart');
-const playAgain = document.getElementById('play-again');
-const timeRecord = document.querySelector('.time-record');
-const timer = document.querySelector('.timer');
+/* Deck hold all cards */
 const deck = document.querySelector('.deck');
 
+/* Star icons for rating */
+const stars = document.querySelectorAll('.fa-star');
+
+/* MoveCount to track a number of moves when start playing game */
+const moveCount = document.querySelector('.moves');
+
+/* Match class when cards are matched */
+const matchedCard = document.getElementsByClassName('match');
+
+/* Close icon modal */
+const close = document.querySelector('#close');
+
+/* Overlay of congrate messages */
+const overlay = document.querySelector('.overlay');
+
+/* Restart icon */
+const restart = document.querySelector('.restart');
+
+/* Play again button */
+const playAgain = document.getElementById('play-again');
+
+/* Declare timer record when finish playing game */
+const timeRecord = document.querySelector('.time-record');
+
+/* Declare timer when start playing game */
+const timer = document.querySelector('.timer');
+
+/* Declare move, min, sec and hr to 0 when start playing */
 let moves = 0;
 let min = 0, sec = 0, hr = 0;
-let interval;
+
+/* Declare openedCards to empty array*/
 let openedCards = [];
+
+let interval;
 let card,
     cards
 
- // Shuffle function from http://stackoverflow.com/a/2450976
+/* Shuffle function from http://stackoverflow.com/a/2450976 */
 function shuffle(array) {
     let currentIndex = array.length,
         temporaryValue,
@@ -56,6 +79,7 @@ function shuffle(array) {
     return array;
 }
 
+/* Set the rule how to count sec, min and hr */
 function setTimer() {
     sec += 1;
     if (sec === 60) {
@@ -69,10 +93,12 @@ function setTimer() {
     timer.innerHTML = hr + 'h : ' + min + 'm : ' + sec + 's';
 }
 
+/* Start timer when making the first move */
 function startTimer() {
     interval = setInterval(setTimer, 1000);
 }
 
+/* Initialize variables when start a new game */
 function startGame() {
     cards = shuffle(cards);
     openedCards = [];
@@ -92,22 +118,27 @@ function startGame() {
     min = 0;
     sec = 0;
     hr = 0;
+
     timer.innerHTML = hr + 'h : ' + min + 'm : ' + sec + 's';
     clearInterval(interval);
 }
 
+/* Add classes when click to open a card */
 function displayCard() {
     this.classList.add('open', 'show', 'disabled');
 }
 
+/* Add disable class when click a card */
 function disable() {
     cards.forEach(card => card.classList.add('disabled'));
 }
 
+/* Remove disable class after categorizing matched or unmatched two cards */
 function enable() {
     cards.forEach(card => card.classList.remove('disabled'));
 }
 
+/* Add styles to matched cards */
 function matched() {
     openedCards[0].classList.add('match');
     openedCards[1].classList.add('match');
@@ -116,6 +147,7 @@ function matched() {
     openedCards = [];
 }
 
+/* Add styles to unmatched cards */
 function unmatched() {
     openedCards[0].classList.add('unmatch');
     openedCards[1].classList.add('unmatch');
@@ -128,6 +160,7 @@ function unmatched() {
     }, 800);
 }
 
+/* Counting moves when start playing a game and set a rule of rating stars depend on a number of moves */
 function moveCounter() {
     moves += 1;
     moveCount.innerHTML = moves;
@@ -153,6 +186,7 @@ function moveCounter() {
     }
 }
 
+/* Set conditions of moves counting and matched or unmatched cards when opening two cards */
 function openCard() {
     openedCards.push(this);
     let len = openedCards.length;
@@ -166,16 +200,7 @@ function openCard() {
     }
 }
 
-function closeModal() {
-    overlay.classList.remove('show-modal');
-    startGame();
-}
-
-function addPlayAgainListener() {
-    overlay.classList.remove('show-modal');
-    startGame();
-}
-
+/* Popup congratulation messages when all cards are opened and matched*/
 function congratulations() {
     if (matchedCard.length === 16) {
         clearInterval(interval);
@@ -188,6 +213,20 @@ function congratulations() {
     }
 }
 
+/* Close modal and restart a new game when click X button */
+function closeModal() {
+    overlay.classList.remove('show-modal');
+    startGame();
+}
+
+/* Close modal and restart a new game when click play again button */
+function addPlayAgainListener() {
+    overlay.classList.remove('show-modal');
+    startGame();
+}
+
+/* Create a deck of 16 cards by creating element <li> and <i> and append them to <ul> in HTML file.
+ After creating the deck, add eventlistener when click some elements */
 function createCardDeck() {
     let iconClassList = [
         'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube',
@@ -219,6 +258,7 @@ function createCardDeck() {
     startGame();
 }
 
+/* Run the function when page is refreshed or loaded */
 document.addEventListener('DOMContentLoaded', function(){
     createCardDeck();
 });
