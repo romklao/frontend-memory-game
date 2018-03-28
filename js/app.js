@@ -259,7 +259,7 @@ function createCardDeck() {
     startGame();
 }
 
-/* Run the function when page is refreshed or loaded */
+/* Run the function when the page is refreshed or loaded */
 document.addEventListener('DOMContentLoaded', function(){
     createCardDeck();
 });
