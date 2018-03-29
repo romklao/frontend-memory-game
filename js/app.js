@@ -55,8 +55,8 @@ const timer = document.querySelector('.timer');
 /* Create state object to set the initial state of variables */
 let state = {
     moves: 0,
-    min: 0,
     sec: 0,
+    min: 0,
     hr: 0,
     openedCards: [],
     interval: undefined,
@@ -187,7 +187,7 @@ function moveCounter() {
     }
 }
 
-/* Set conditions of moves counting and matched or unmatched state.cards when opening two state.cards */
+/* Set conditions of moves counting and matched or unmatched cards when opening two cards */
 function openCard() {
     state.openedCards.push(this);
     let len = state.openedCards.length;
