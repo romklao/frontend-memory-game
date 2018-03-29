@@ -104,6 +104,7 @@ function startGame() {
     cards = shuffle(cards);
     openedCards = [];
     deck.innerHTML = '';
+
     cards.forEach(card => {
         card.classList.remove('show', 'open', 'match', 'disabled');
         deck.appendChild(card);
