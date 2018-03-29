@@ -61,8 +61,7 @@ let openedCards = [];
 
 /* Declare variables */
 let interval;
-let card,
-    cards
+let cards
 
 /* Shuffle function from http://stackoverflow.com/a/2450976 */
 function shuffle(array) {
@@ -237,21 +236,21 @@ function createCardDeck() {
     ];
 
     for (let i = 0; i < iconClassList.length; i++) {
-        let list = document.createElement('li');
-        list.className = 'card';
+        let listItem = document.createElement('li');
+        listItem.className = 'card';
 
         let cardImage = document.createElement('i');
         cardImage.className = iconClassList[i];
 
-        list.appendChild(cardImage);
-        list.addEventListener('click', displayCard);
-        list.addEventListener('click', openCard);
-        list.addEventListener('click', congratulations);
+        listItem.appendChild(cardImage);
+        listItem.addEventListener('click', displayCard);
+        listItem.addEventListener('click', openCard);
+        listItem.addEventListener('click', congratulations);
 
-        deck.appendChild(list);
+        deck.appendChild(listItem);
     }
 
-    card = document.getElementsByClassName('card');
+    let card = document.getElementsByClassName('card');
     cards = [...card];
 
     close.addEventListener('click', closeModal);
