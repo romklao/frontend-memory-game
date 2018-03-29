@@ -52,16 +52,16 @@ const timeRecord = document.querySelector('.time-record');
 /* Define timer when start playing game */
 const timer = document.querySelector('.timer');
 
-/* Define move, min, sec and hr to 0 when start playing */
-let moves = 0;
-let min = 0, sec = 0, hr = 0;
-
-/* Define openedCards to empty array*/
-let openedCards = [];
-
-/* Declare variables */
-let interval;
-let cards
+/* Create state object to set the initial state of variables */
+let state = {
+    moves: 0,
+    min: 0,
+    sec: 0,
+    hr: 0,
+    openedCards: [],
+    interval: undefined,
+    cards: undefined
+}
 
 /* Shuffle function from http://stackoverflow.com/a/2450976 */
 function shuffle(array) {
@@ -81,47 +81,47 @@ function shuffle(array) {
 
 /* Set the rule how to count sec, min and hr */
 function setTimer() {
-    sec += 1;
-    if (sec === 60) {
-        min += 1;
-        sec = 0;
+    state.sec += 1;
+    if (state.sec === 60) {
+        state.min += 1;
+        state.sec = 0;
     }
-    if (min === 60) {
-        hr += 1;
-        min = 0;
+    if (state.min === 60) {
+        state.hr += 1;
+        state.min = 0;
     }
-    timer.innerHTML = hr + 'h : ' + min + 'm : ' + sec + 's';
+    timer.innerHTML = state.hr + 'h : ' + state.min + 'm : ' + state.sec + 's';
 }
 
 /* Start timer when making the first move */
 function startTimer() {
-    interval = setInterval(setTimer, 1000);
+    state.interval = setInterval(setTimer, 1000);
 }
 
 /* Initialize variables when start a new game */
 function startGame() {
-    cards = shuffle(cards);
-    openedCards = [];
+    state.cards = shuffle(state.cards);
+    state.openedCards = [];
     deck.innerHTML = '';
 
-    cards.forEach(card => {
+    state.cards.forEach(card => {
         card.classList.remove('show', 'open', 'match', 'disabled');
         deck.appendChild(card);
     });
 
-    moves = 0;
-    moveCount.innerHTML = moves;
+    state.moves = 0;
+    moveCount.innerHTML = state.moves;
 
     for (let i = 0; i < 3; i++) {
         stars[i].style.visibility = 'visible';
     }
 
-    min = 0;
-    sec = 0;
-    hr = 0;
+    state.min = 0;
+    state.sec = 0;
+    state.hr = 0;
 
-    timer.innerHTML = hr + 'h : ' + min + 'm : ' + sec + 's';
-    clearInterval(interval);
+    timer.innerHTML = state.hr + 'h : ' + state.min + 'm : ' + state.sec + 's';
+    clearInterval(state.interval);
 }
 
 /* Add classes when click to open a card */
@@ -131,54 +131,54 @@ function displayCard() {
 
 /* Add disable class when click a card */
 function disable() {
-    cards.forEach(card => card.classList.add('disabled'));
+    state.cards.forEach(card => card.classList.add('disabled'));
 }
 
 /* Remove disable class after categorizing matched or unmatched two cards */
 function enable() {
-    cards.forEach(card => card.classList.remove('disabled'));
+    state.cards.forEach(card => card.classList.remove('disabled'));
 }
 
 /* Add styles to matched cards */
 function matched() {
-    openedCards[0].classList.add('match');
-    openedCards[1].classList.add('match');
-    openedCards[0].classList.remove('open', 'show', 'disabled');
-    openedCards[1].classList.remove('open', 'show', 'disabled');
-    openedCards = [];
+    state.openedCards[0].classList.add('match');
+    state.openedCards[1].classList.add('match');
+    state.openedCards[0].classList.remove('open', 'show', 'disabled');
+    state.openedCards[1].classList.remove('open', 'show', 'disabled');
+    state.openedCards = [];
 }
 
 /* Add styles to unmatched cards */
 function unmatched() {
-    openedCards[0].classList.add('unmatch');
-    openedCards[1].classList.add('unmatch');
+    state.openedCards[0].classList.add('unmatch');
+    state.openedCards[1].classList.add('unmatch');
     disable();
     setTimeout(function() {
-        openedCards[0].classList.remove('open', 'show', 'unmatch');
-        openedCards[1].classList.remove('open', 'show', 'unmatch');
+        state.openedCards[0].classList.remove('open', 'show', 'unmatch');
+        state.openedCards[1].classList.remove('open', 'show', 'unmatch');
         enable();
-        openedCards = [];
+        state.openedCards = [];
     }, 800);
 }
 
 /* Counting moves when start playing a game and set a rule of rating stars depend on a number of moves */
 function moveCounter() {
-    moves += 1;
-    moveCount.innerHTML = moves;
-    if (moves === 1) {
-        min = 0;
-        sec = 0;
-        hr = 0;
+    state.moves += 1;
+    moveCount.innerHTML = state.moves;
+    if (state.moves === 1) {
+        state.min = 0;
+        state.sec = 0;
+        state.hr = 0;
         startTimer();
     }
-    if (moves > 10 && moves < 14) {
+    if (state.moves > 10 && state.moves < 14) {
         for (let i = 0; i < 3; i++) {
             if (i > 1) {
                 stars[i].style.visibility = "collapse";
             }
         }
     }
-    else if (moves > 14) {
+    else if (state.moves > 14) {
         for (let i = 0; i < 3; i++) {
             if (i > 0) {
                 stars[i].style.visibility = 'collapse';
@@ -187,13 +187,13 @@ function moveCounter() {
     }
 }
 
-/* Set conditions of moves counting and matched or unmatched cards when opening two cards */
+/* Set conditions of moves counting and matched or unmatched state.cards when opening two state.cards */
 function openCard() {
-    openedCards.push(this);
-    let len = openedCards.length;
+    state.openedCards.push(this);
+    let len = state.openedCards.length;
     if (len === 2) {
         moveCounter();
-        if (openedCards[0].children[0].className === openedCards[1].children[0].className) {
+        if (state.openedCards[0].children[0].className === state.openedCards[1].children[0].className) {
             matched();
         } else {
             unmatched();
@@ -204,12 +204,12 @@ function openCard() {
 /* Popup congratulation messages when all cards are opened and matched*/
 function congratulations() {
     if (matchedCard.length === 16) {
-        clearInterval(interval);
+        clearInterval(state.interval);
         timeRecord.innerHTML = timer.innerHTML;
 
         overlay.classList.add('show-modal');
         let starsRating = document.querySelector('.stars').innerHTML;
-        document.querySelector('.moves-record').innerHTML = moves;
+        document.querySelector('.moves-record').innerHTML = state.moves;
         document.querySelector('.rating').innerHTML = starsRating;
     }
 }
@@ -251,7 +251,7 @@ function createCardDeck() {
     }
 
     let card = document.getElementsByClassName('card');
-    cards = [...card];
+    state.cards = [...card];
 
     close.addEventListener('click', closeModal);
     playAgain.addEventListener('click', addPlayAgainListener);
