@@ -2,6 +2,7 @@
 
 ## What is the Memory Game
 This is a simple game built to test a user's memory. There's a deck of cards with different icons.
+
 ![snippet](img/memory-game.png)
 
 ## Link to Play
