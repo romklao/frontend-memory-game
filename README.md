@@ -1,7 +1,7 @@
 # Memory Game Project
 
 ## What is the Memory Game
-This is a simple game built to test a user's memory. There's a deck of cards with different icons.
+This is a simple game built to test a user's memory. There's a deck of cards with different icons and each icon is shown in two cards.
 
 ![snippet](img/memory-game.png)
 
@@ -15,7 +15,7 @@ Match cards in less time with less moves.
 * Click a card to display it's icon.
 * Memorize each card's location to find a matched card.
 * Keep revealing cards and match all cards in the deck.
-* Work on matching cards with less moves and shorter time.
+* Work on matching cards with less moves in a shorter time.
 
 ## How to create the Memory Game
 I manipulated the DOM with Vanilla JS, changed part of the HTML and styled the game with CSS.
