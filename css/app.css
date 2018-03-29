@@ -170,6 +170,8 @@ header {
     padding-top: 4px;
 }
 
+/* Styles for overlay */
+
 .overlay {
     z-index: 100;
     position: fixed;
@@ -254,6 +256,7 @@ header {
 
 
 /* animations */
+
 @keyframes flipInY {
     from {
         transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
