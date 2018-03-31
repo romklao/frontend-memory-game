@@ -1,4 +1,3 @@
-"use strict";
 /*
  * Create a list that holds all of your cards
  */
@@ -21,6 +20,7 @@
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 (function () {
+    'use strict';
 
 /* Deck hold all cards */
 const deck = document.querySelector('.deck');
@@ -60,6 +60,7 @@ let state = {
     hr: 0,
     openedCards: [],
     interval: undefined,
+    unmatchTimeout: undefined,
     cards: undefined
 }
 
@@ -101,11 +102,11 @@ function startTimer() {
 /* Initialize variables when start a new game */
 function startGame() {
     state.cards = shuffle(state.cards);
-    state.openedCards = [];
     deck.innerHTML = '';
+    state.openedCards = [];
 
     state.cards.forEach(card => {
-        card.classList.remove('show', 'open', 'match', 'disabled');
+        card.classList.remove('show', 'open', 'match', 'unmatch', 'disabled');
         deck.appendChild(card);
     });
 
@@ -122,6 +123,7 @@ function startGame() {
 
     timer.innerHTML = state.hr + 'h : ' + state.min + 'm : ' + state.sec + 's';
     clearInterval(state.interval);
+    clearTimeout(state.unmatchTimeout);
 }
 
 /* Add classes when click to open a card */
@@ -153,7 +155,7 @@ function unmatched() {
     state.openedCards[0].classList.add('unmatch');
     state.openedCards[1].classList.add('unmatch');
     disable();
-    setTimeout(function() {
+    state.unmatchTimeout = setTimeout(() => {
         state.openedCards[0].classList.remove('open', 'show', 'unmatch');
         state.openedCards[1].classList.remove('open', 'show', 'unmatch');
         enable();
